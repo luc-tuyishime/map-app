@@ -1,22 +1,22 @@
-import React, { Component } from 'react'
-import GoogleMapReact from 'google-map-react'
+import React, { Component } from 'react';
 
 
 export default class Map extends Component {
+shouldComponentUpdate(){
+  return false;
+}
+
+componentDidMount(){
+  this.map = new google.maps.Map(this.refs.map, {
+    center: { lat: this.props.lat, lng: this.props.lng},
+    zoom: 8
+  });
+}
 
 render() {
-  const defaultProps = {
-    center: { lat: this.props.lat, lng: this.props.lon },
-    zoom: 11
-  }
   console.log(this.props);
     return (
-      <div className='google-map'>
-        <GoogleMapReact
-          defaultCenter={ defaultProps.center }
-          defaultZoom={ defaultProps.zoom }>
-        </GoogleMapReact>
-      </div>
-    )
+      <div id="map" ref="map" /> // refer to the map id in the dom (html element)
+    );
   }
 }

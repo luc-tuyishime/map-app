@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import SearchBar from '../containers/search_bar';
-import WeatherList from '../containers/list_weather';
+import Map from './google_map';
 import '../App.css';
 
 
 class App extends Component {
+  constructor(props){
+     super(props);
+  }
+
   render() {
-    return (
-     <div className="container">
-       <SearchBar />
-       <WeatherList />
-   </div>
-    );
+    console.log(this.props);
+      return (
+        <div style={{height: '100%'}}>
+          Map Me
+          <Map lat={-34.387} lng={150.644} />
+        </div>
+      )
   }
 }
 
