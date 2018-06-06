@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
+const google = window.google;
 
 export default class Map extends Component {
 shouldComponentUpdate(){
-  return false;
+  return false; // never rerender this component
 }
 
 componentDidMount(){
@@ -11,6 +12,11 @@ componentDidMount(){
     center: { lat: this.props.lat, lng: this.props.lng},
     zoom: 8
   });
+}
+
+// will receive new props (lat, lng) from app.js
+componentWillReceiveProps(nextProps){
+  this.map.panTo({ lat: nextProps.lat, lng: nextProps.lng });
 }
 
 render() {
